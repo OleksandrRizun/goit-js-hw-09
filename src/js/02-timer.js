@@ -3,7 +3,7 @@ import "flatpickr/dist/flatpickr.min.css";
 
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-refs = {
+const refs = {
     button: document.querySelector ("button"),
     counters: document.getElementsByClassName ("value")
 }

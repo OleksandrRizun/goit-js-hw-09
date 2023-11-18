@@ -1,6 +1,6 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-refs = {
+const refs = {
   button: document.querySelector ("button"),
   fields: document.getElementsByTagName ("input")
 }
