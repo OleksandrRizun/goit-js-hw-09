@@ -16,3 +16,25 @@ img {
   display: block;
   max-width: 100%;
 }
+
+
+/* for task 2 */
+
+.timer {
+  display: flex;
+  gap: 10px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  min-width: 60px;
+}
+.value {
+  font-size: 2em;
+  text-align: center;
+}
+.label {
+  font-size: .85em;
+  text-transform: uppercase;
+  text-align: center;
+}
