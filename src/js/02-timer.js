@@ -11,6 +11,7 @@ const refs = {
 refs.button.disabled = true;
 
 let timerId = null;
+let selectedTime = null;
 
 const options = {
     enableTime: true,
@@ -22,17 +23,26 @@ const options = {
     },
     onClose(selectedDates) {
         if (selectedDates [0].getTime() < new Date ()) {
+            refs.button.disabled = true;
             return Notify.failure('Please choose a date in the future');
         }
-        showTimeDifference (selectedDates [0].getTime() - new Date ());
-        timerId = setInterval (() => showTimeDifference (selectedDates [0].getTime() - new Date ()), 1000)
+        selectedTime = selectedDates [0].getTime();
+        // 
     },
 };
 
 flatpickr("#datetime-picker", options);
 
-function showTimeDifference (e) {
+refs.button.addEventListener ("click", handleClick);
+
+function handleClick () {
     refs.button.disabled = true;
+    if (!selectedTime) return;
+    showTimeDifference (selectedTime - new Date ());
+    timerId = setInterval (() => showTimeDifference (selectedTime - new Date ()), 1000)
+}
+
+function showTimeDifference (e) {
     let totalSec = Math.round (e / 1000);
     let days = Math.floor (totalSec / 86400);
     let hours = Math.floor ((totalSec - days * 86400) / 3600);
